@@ -21,20 +21,6 @@
 // Use minimax for backpropogation of scores?
 #define USE_MINIMAX true
 
-const float time_alloc[60] =
-{
-    0.0123, 0.0151, 0.0231, 0.0231, 0.0228, 0.0258,
-    0.0255, 0.0268, 0.0267, 0.0266, 0.0263, 0.0263,
-    0.0303, 0.0311, 0.0313, 0.0312, 0.0336, 0.0350,
-    0.0345, 0.0345, 0.0381, 0.0388, 0.0392, 0.0415,
-    0.0423, 0.0421, 0.0455, 0.0467, 0.0489, 0.0497,
-    0.0529, 0.0539, 0.0561, 0.0567, 0.0596, 0.0641,
-    0.0668, 0.0708, 0.0747, 0.0781, 0.0841, 0.0873,
-    0.0919, 0.0991, 0.1075, 0.1178, 0.1276, 0.1412,
-    0.1567, 0.1714, 0.1906, 0.2124, 0.2187, 0.2417,
-    0.2670, 0.3055, 0.3507, 0.4417, 0.9000, 0.9000
-};
-
 /*
  * Constructor for the player; initialize everything here. The side your AI is
  * on (BLACK or WHITE) is passed in as "side". The constructor must finish
@@ -62,8 +48,7 @@ Move *Player::doMove(Move *opponentsMove, int msLeft) {
 
     const int moveNumber = board->countPieces() - 4;
     assert(0 <= moveNumber && moveNumber <= 60);
-    int timeBudgetMs = msLeft < 0? 8000:(time_alloc[moveNumber] * msLeft);
-    if (timeBudgetMs < 500) timeBudgetMs = 500;
+    int timeBudgetMs = msLeft;
 
     fprintf(stderr, "\nAllocated %d of %d ms on move %d.\n",
         timeBudgetMs, msLeft, moveNumber);

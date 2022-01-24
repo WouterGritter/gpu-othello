@@ -5,7 +5,7 @@ CUDA_INC_PATH   = $(CUDA_PATH)/include
 CUDA_BIN_PATH   = $(CUDA_PATH)/bin
 CUDA_LIB_PATH   = $(CUDA_PATH)/lib
 
-NVCC		= $(CUDA_BIN_PATH)/nvcc
+NVCC		= /usr/bin/nvcc
 
 # CUDA code generation flags
 GENCODE_FLAGS = -gencode arch=compute_30,code=sm_30 \
